@@ -5,7 +5,7 @@ const GenerateImages = () => {
 
   const images = [];
 
-  for (let i = 0; i < 50; i++)
+  for (let i = 0; i < 27; i++)
 
     images.push(<ImageContainer key={i} src={`https://picsum.photos/2500?random=${i + 1}`} w={200} h={200} />)
 
