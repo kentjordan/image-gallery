@@ -15,7 +15,7 @@ const ImageContainer = ({ src, w, h }: { src: string, w: number, h: number }) =>
     return (
         <motion.div
 
-            style={{ margin: '8px', height: `${h}px`, width: `${w}px`, borderRadius: '4px'}}
+            style={{ margin: '8px', height: `${h}px`, width: `${w}px`, borderRadius: '4px' }}
             initial={{ boxShadow: "none", }}
             whileHover={{ scale: 1.5, zIndex: 2, boxShadow: "0 0 16px rgba(0, 0, 0, 0.5)" }}>
 
@@ -24,14 +24,11 @@ const ImageContainer = ({ src, w, h }: { src: string, w: number, h: number }) =>
             }
 
             <Image
-                style={{borderRadius: '4px' }}
+                style={{ borderRadius: '4px' }}
                 src={src}
                 width={w}
                 height={h}
-                onLoadingComplete={() => {
-                    updateLoading(false);;
-                    console.log('onLoadingComplete');
-                }}>
+                onLoadingComplete={() => updateLoading(false)}>
 
             </Image>
 
