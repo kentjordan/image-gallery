@@ -14,15 +14,28 @@ const ImageContainer = ({ src, w, h }: { src: string, w: number, h: number }) =>
 
     return (
         <motion.div
-            style={{ margin: '8px', height: `${h}px`, width: `${w}px`, borderRadius: '4px', overflow: 'hidden' }}
+
+            style={{ margin: '8px', height: `${h}px`, width: `${w}px`, borderRadius: '4px'}}
             initial={{ boxShadow: "none", }}
             whileHover={{ scale: 1.5, zIndex: 2, boxShadow: "0 0 16px rgba(0, 0, 0, 0.5)" }}>
 
             {
-                isLoading && <Skeleton height={h} highlightColor='#ffffff' baseColor='#f0f0f0' />
+                isLoading && <Skeleton height={h} highlightColor='#ffffff' baseColor='#f0f0f0'></Skeleton>
             }
 
-            <Image src={src} width={w} height={h} style={{ borderRadius: '4px' }} onLoadingComplete={() => updateLoading(!isLoading)} />
+            <Image
+                style={{borderRadius: '4px' }}
+                src={src}
+                width={w}
+                height={h}
+                onLoadingComplete={() => {
+                    updateLoading(false);;
+                    console.log('onLoadingComplete');
+                }}>
+
+            </Image>
+
+
 
         </motion.div>
     )
