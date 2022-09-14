@@ -1,19 +1,36 @@
 import type { NextPage } from 'next'
-import ImageContainer from 'components/Image';
+import { ImageWLoading } from 'components/Image';
 
-const GenerateImages = () => {
+import { createContext, useState } from 'react';
 
-  const images = [];
+let clickedIndex: { i: number, state: any } = {
+  i: 0,
+  state: undefined
+};
+
+export const ImageViewerContext = createContext(clickedIndex);
+
+const images: JSX.Element[] = [];
+
+(() => {
+
+  const squared = 3000;
 
   for (let i = 0; i < 27; i++)
 
-    images.push(<ImageContainer key={i} src={`https://picsum.photos/2500?random=${i + 1}`} w={200} h={200} />)
+    images.push(<ImageWLoading key={i} src={`https://picsum.photos/${squared}?random=${i}`} index={i} scale={squared} />)
 
   return images;
 
-}
+})();
 
 const Home: NextPage = () => {
+
+  const [openViewer, setOpenViewer] = useState(false);
+
+  clickedIndex.state = setOpenViewer;
+
+
   return (
     <div className='home'>
 
@@ -23,10 +40,20 @@ const Home: NextPage = () => {
       </div>
 
       <div className='images-container'>
-        {
-          GenerateImages()
-        }
+        {images.map((e, i) => <div style={{ width: '200px', height: '200px', margin: '8px' }}>{e}</div>)}
       </div>
+
+      <ImageViewerContext.Provider value={clickedIndex}>
+
+        <div className='image-viewer' onClick={() => setOpenViewer(false)} style={{ display: openViewer ? 'flex' : 'none', backgroundColor: '#000000a7', width: '100vw', height: '100vh', position: 'fixed' }}>
+
+          <div className='container'>
+            {images[clickedIndex.i]}
+          </div>
+
+        </div>
+
+      </ImageViewerContext.Provider>
 
     </div>
   )

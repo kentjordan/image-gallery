@@ -2,40 +2,50 @@
 import { motion } from 'framer-motion';
 
 import Image from 'next/image'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
 
+import { useContext } from 'react';
 
-const ImageContainer = ({ src, w, h }: { src: string, w: number, h: number }) => {
+import { ImageViewerContext } from 'pages';
+
+// const ImageContainer = ({ src, w, h, index }: { src: string, w: number, h: number, index: number }) => {
+
+
+//     const context = useContext(ImageViewerContext);
+
+//     return (
+//         <motion.div
+//             onClick={() => {
+//                 context.i = index;
+//             }}
+//             style={{ margin: '8px', height: `${250}px`, width: `${250}px`, borderRadius: '4px' }}
+//             initial={{ boxShadow: "none", }}
+//             whileHover={{ scale: 1.5, zIndex: 1, boxShadow: "0 0 16px rgba(0, 0, 0, 0.5)" }}>
+//         </motion.div>
+//     )
+// }
+
+export const ImageWLoading = ({ src, scale, index }: { src: string, scale: number, index: number }) => {
+
+    const clickedIndex = useContext(ImageViewerContext)
 
     const [isLoading, updateLoading] = useState(true);
 
     return (
-        <motion.div
-
-            style={{ margin: '8px', height: `${h}px`, width: `${w}px`, borderRadius: '4px' }}
-            initial={{ boxShadow: "none", }}
-            whileHover={{ scale: 1.5, zIndex: 2, boxShadow: "0 0 16px rgba(0, 0, 0, 0.5)" }}>
-
-            {
-                isLoading && <Skeleton height={h} highlightColor='#ffffff' baseColor='#f0f0f0'></Skeleton>
-            }
-
-            <Image
-                style={{ borderRadius: '4px' }}
-                src={src}
-                width={w}
-                height={h}
-                onLoadingComplete={() => updateLoading(false)}>
-
-            </Image>
-
-
-
-        </motion.div>
+        <>
+            {isLoading ? <Skeleton height={'100%'} style={{ lineHeight: '2' , margin: '8px' }} highlightColor='#ffffff' baseColor='#dadada' /> : ''}
+            <motion.div initial={{ x: 500 }} animate={{ x: 0 }} style={{ height: isLoading ? '0' : `inherit`, width: isLoading ? '0' : `inherit`, margin: '8px' }} onClick={() => {
+                clickedIndex.i = index;
+                clickedIndex.state(true);
+            }}>
+                <Image style={{ borderRadius: '4px' }} src={src} width={scale} height={scale} onLoadingComplete={() => updateLoading(false)} layout='responsive' />
+            </motion.div>
+        </>
     )
+
 }
 
-export default ImageContainer
+// export default ImageContainer
