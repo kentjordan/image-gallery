@@ -28,21 +28,35 @@ import { ImageViewerContext } from 'pages';
 //     )
 // }
 
+const imgStyle = { borderRadius: '4px', cursor: 'pointer' }
+
 export const ImageWLoading = ({ src, scale, index }: { src: string, scale: number, index: number }) => {
 
-    const clickedIndex = useContext(ImageViewerContext)
+    const clickedImage = useContext(ImageViewerContext)
 
     const [isLoading, updateLoading] = useState(true);
 
+    const canvasOnClick = () => {
+        clickedImage.index = index;
+        clickedImage.state(true);
+    }
+
+    const getHW = () => isLoading ? '0' : `inherit`
+
+    const canvasStyle = {
+        height: getHW(),
+        width: getHW(),
+        margin: '8px'
+    }
+
     return (
         <>
-            {isLoading ? <Skeleton height={'100%'} style={{ lineHeight: '2', margin: '8px' }} highlightColor='#ffffff' baseColor='#dadada' /> : ''}
-            <motion.div initial={{ scale: 0.1 }} animate={{ scale: 1 }} style={{ height: isLoading ? '0' : `inherit`, width: isLoading ? '0' : `inherit`, margin: '8px' }} onClick={() => {
-                clickedIndex.i = index;
-                clickedIndex.state(true);
-            }}>
-                <Image style={{ borderRadius: '4px', cursor: 'pointer' }} src={src} width={scale} height={scale} onLoadingComplete={() => updateLoading(false)} layout='responsive' />
+            {isLoading && <Skeleton height={'100%'} style={{ lineHeight: '2', margin: '8px' }} highlightColor='#ffffff' baseColor='#dadada' />}
+
+            <motion.div initial={{ scale: 0.1 }} animate={{ scale: 1 }} style={canvasStyle} onClick={canvasOnClick}>
+                <Image layout='responsive' src={src} width={scale} height={scale} style={imgStyle} onLoadingComplete={() => updateLoading(false)} />
             </motion.div>
+
         </>
     )
 

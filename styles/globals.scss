@@ -10,13 +10,13 @@ body {
   overflow-x: hidden;
 }
 
-#__next {}
+// #__next {}
 
 h1 {
   margin: 0;
 }
 
-header {}
+// header {}
 
 footer {
   width: 100%;
@@ -33,34 +33,6 @@ footer {
   p {
     padding: 0px 16px;
     text-align: center;
-  }
-
-}
-
-.image-viewer {
-
-  // position: absolute;
-
-  width: 100vw;
-  height: 100vh;
-  z-index: 5;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .container {
-
-    width: 100%;
-    min-width: 200px;
-    max-width: 600px;
-
-    height: auto;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
   }
 
 }
