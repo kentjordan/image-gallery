@@ -41,7 +41,7 @@ export const ImageWLoading = ({ src, scale, index }: { src: string, scale: numbe
                 clickedIndex.i = index;
                 clickedIndex.state(true);
             }}>
-                <Image style={{ borderRadius: '4px' }} src={src} width={scale} height={scale} onLoadingComplete={() => updateLoading(false)} layout='responsive' />
+                <Image style={{ borderRadius: '4px', cursor: 'pointer' }} src={src} width={scale} height={scale} onLoadingComplete={() => updateLoading(false)} layout='responsive' />
             </motion.div>
         </>
     )

@@ -35,8 +35,8 @@ const Home: NextPage = () => {
     <div className='home'>
 
       <div className='preamble'>
-        <h1 style={{fontSize: '3rem'}}>Image Gallery</h1>
-        <p style={{fontSize: '1.5rem'}}>Just a simple image gallery viewer made with NEXT and React. By Kent ❤️</p>
+        <h1>Image Gallery</h1>
+        <p>A simple image gallery viewer made w/ NEXT & React ❤️</p>
       </div>
 
       <div className='images-container'>
@@ -55,7 +55,7 @@ const Home: NextPage = () => {
 
       </ImageViewerContext.Provider>
 
-    </div>
+    </div >
   )
 }
 
