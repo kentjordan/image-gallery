@@ -53,7 +53,7 @@ export const ImageWLoading = ({ src, scale, index }: { src: string, scale: numbe
 
     return (
         <>
-            {isLoading && <Skeleton height={'100%'} style={{ lineHeight: '2', margin: '8px' }} highlightColor='#ffffff' baseColor='#dadada' />}
+            { isLoading && <Skeleton height={'100%'} style={{ lineHeight: '2', margin: '8px' }} highlightColor='#ffffff' baseColor='#dadada' /> }
 
             <motion.div initial={{ scale: 0.1 }} animate={{ scale: 1 }} style={canvasStyle} onClick={canvasOnClick}>
                 <Image layout='responsive' src={src} width={scale} height={scale} style={imgStyle} onLoadingComplete={() => updateLoading(false)} />
