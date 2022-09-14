@@ -28,6 +28,8 @@ import { ImageViewerContext } from 'pages';
 //     )
 // }
 
+// export default ImageContainer
+
 const imgStyle = { borderRadius: '4px', cursor: 'pointer' }
 
 export const ImageWLoading = ({ src, scale, index }: { src: string, scale: number, index: number }) => {
@@ -62,4 +64,4 @@ export const ImageWLoading = ({ src, scale, index }: { src: string, scale: numbe
 
 }
 
-// export default ImageContainer
+
