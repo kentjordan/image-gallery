@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import { ImageWLoading } from 'components/Image';
 
 import { createContext, useState } from 'react';
+import { motion } from 'framer-motion';
 
 let clickedIndex: { i: number, state: any } = {
   i: 0,
@@ -35,12 +36,12 @@ const Home: NextPage = () => {
     <div className='home'>
 
       <div className='preamble'>
-        <h1>Image Gallery</h1>
+        <h1 >Image Gallery</h1>
         <p>A simple image gallery viewer made w/ NEXT & React ❤️</p>
       </div>
 
       <div className='images-container'>
-        {images.map((e, i) => <div key={i} style={{ width: '200px', height: '200px', margin: '8px' }}>{e}</div>)}
+        {images.map((e, i) => <motion.div key={i} style={{ width: '200px', height: '200px', margin: '8px' }} whileHover={{ scale: 1.25, margin: '24px' }} >{e}</motion.div>)}
       </div>
 
       <ImageViewerContext.Provider value={clickedIndex}>

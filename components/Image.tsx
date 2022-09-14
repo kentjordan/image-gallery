@@ -36,8 +36,8 @@ export const ImageWLoading = ({ src, scale, index }: { src: string, scale: numbe
 
     return (
         <>
-            {isLoading ? <Skeleton height={'100%'} style={{ lineHeight: '2' , margin: '8px' }} highlightColor='#ffffff' baseColor='#dadada' /> : ''}
-            <motion.div initial={{ x: 500 }} animate={{ x: 0 }} style={{ height: isLoading ? '0' : `inherit`, width: isLoading ? '0' : `inherit`, margin: '8px' }} onClick={() => {
+            {isLoading ? <Skeleton height={'100%'} style={{ lineHeight: '2', margin: '8px' }} highlightColor='#ffffff' baseColor='#dadada' /> : ''}
+            <motion.div initial={{ scale: 0.1 }} animate={{ scale: 1 }} style={{ height: isLoading ? '0' : `inherit`, width: isLoading ? '0' : `inherit`, margin: '8px' }} onClick={() => {
                 clickedIndex.i = index;
                 clickedIndex.state(true);
             }}>
