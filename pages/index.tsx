@@ -31,7 +31,6 @@ const Home: NextPage = () => {
 
   clickedIndex.state = setOpenViewer;
 
-
   return (
     <div className='home'>
 
