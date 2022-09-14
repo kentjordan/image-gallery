@@ -30,9 +30,18 @@ import { ImageViewerContext } from 'pages';
 
 // export default ImageContainer
 
-const imgStyle = { borderRadius: '4px', cursor: 'pointer' }
+const imgStyle = {
+    borderRadius: '4px',
+    cursor: 'pointer'
+}
 
-export const ImageWLoading = ({ src, scale, index }: { src: string, scale: number, index: number }) => {
+interface ImageWLoading {
+    src: string,
+    scale: number,
+    index: number
+};
+
+export const ImageWLoading = ({ src, scale, index }: ImageWLoading) => {
 
     const clickedImage = useContext(ImageViewerContext)
 
@@ -53,15 +62,12 @@ export const ImageWLoading = ({ src, scale, index }: { src: string, scale: numbe
 
     return (
         <>
-            { isLoading && <Skeleton height={'100%'} style={{ lineHeight: '2', margin: '8px' }} highlightColor='#ffffff' baseColor='#dadada' /> }
+            {isLoading && <Skeleton height={'100%'} style={{ lineHeight: '2', margin: '8px' }} highlightColor='#ffffff' baseColor='#dadada' />}
 
             <motion.div initial={{ scale: 0.1 }} animate={{ scale: 1 }} style={canvasStyle} onClick={canvasOnClick}>
                 <Image layout='responsive' src={src} width={scale} height={scale} style={imgStyle} onLoadingComplete={() => updateLoading(false)} />
             </motion.div>
 
-        </>
-    )
-
+        </>)
 }
-
 
