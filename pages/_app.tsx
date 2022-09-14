@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
 
       <footer>
-        <p>Made by Kent with 💖</p>
+        <p>Written in NEXT.js & React.js with Typescript. Made by Kent Jordan.</p>
       </footer>
     </>
 

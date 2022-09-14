@@ -37,7 +37,7 @@ const Home: NextPage = () => {
 
       <div className='preamble'>
         <h1 >Image Gallery</h1>
-        <p>A simple image gallery viewer made w/ NEXT & React ❤️</p>
+        <p>A simple image gallery by K. Jordan ❤️</p>
       </div>
 
       <div className='images-container'>
