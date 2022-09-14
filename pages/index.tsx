@@ -35,12 +35,12 @@ const Home: NextPage = () => {
     <div className='home'>
 
       <div className='preamble'>
-        <h1>Image Gallery</h1>
-        <p>Just a simple image gallery viewer made with NEXT and React. By Kent ❤️</p>
+        <h1 style={{fontSize: '3rem'}}>Image Gallery</h1>
+        <p style={{fontSize: '1.5rem'}}>Just a simple image gallery viewer made with NEXT and React. By Kent ❤️</p>
       </div>
 
       <div className='images-container'>
-        {images.map((e, i) => <div style={{ width: '200px', height: '200px', margin: '8px' }}>{e}</div>)}
+        {images.map((e, i) => <div key={i} style={{ width: '200px', height: '200px', margin: '8px' }}>{e}</div>)}
       </div>
 
       <ImageViewerContext.Provider value={clickedIndex}>
