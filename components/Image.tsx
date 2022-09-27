@@ -70,4 +70,3 @@ export const ImageWLoading = ({ src, scale, index }: ImageWLoading) => {
 
         </>)
 }
-
